@@ -26,6 +26,8 @@ import Modelpage from "./Modelpage";
 import Chatbot from "./Chatbot";
 import ModelsPag from "./models";
 import Final from "./components/component/Final";
+import Budget from "./components/page/Budget";
+import UsagePage from "./components/page/UsagePage";
 
 export default function App() {
   return (
@@ -42,6 +44,7 @@ export default function App() {
         <Route path="/usage" element={<Usage />} />
         <Route path="/team" element={<Teamspage />} />
         <Route path="/chatbot" element={<Chatbot />} />
+        <Route path="/budget" element={<UsagePage />} />
       </Routes>
     </Router>
   );
