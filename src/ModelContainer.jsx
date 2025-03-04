@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ModelsPage from "./ModelsPage";
+import ModelsPage from "./Modelpage";
 import ModelSelection from "./ModelSelection";
 
 const ModelsContainer = () => {

@@ -23,6 +23,9 @@ import Usage from "./Usage";
 import Teamspage from "./Teampage";
 import ModelsContainer from "./ModelContainer";
 import Modelpage from "./Modelpage";
+import Chatbot from "./Chatbot";
+import ModelsPag from "./models";
+import Final from "./components/component/Final";
 
 export default function App() {
   return (
@@ -31,13 +34,14 @@ export default function App() {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Modelpage />} />
+        <Route path="/home" element={<Final />} />
         <Route path="/logout" element={<Login />} />
-        <Route path="/models" element={<Modelpage />} />
+        <Route path="/models" element={<Final />} />
         <Route path="/chat-completion" element={<Completion />} />
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/usage" element={<Usage />} />
         <Route path="/team" element={<Teamspage />} />
+        <Route path="/chatbot" element={<Chatbot />} />
       </Routes>
     </Router>
   );

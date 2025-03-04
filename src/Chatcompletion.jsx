@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Navbar from "./Navbar";
-import ModelsPage from "./Model";
-import ChatInterface from "./Chatinterface";
+import ModelSelection from "./ModelSelection";
 
 export default function Completion() {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -19,7 +18,7 @@ export default function Completion() {
         {/* Navbar */}
         <Navbar onAdd={handleAdd} />
         <div>
-          <ChatInterface />
+          <ModelSelection />
         </div>
       </div>
     </div>

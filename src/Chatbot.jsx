@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Navbar from "./Navbar";
-import History from "./History";
-import TeamsPage from "./Teamspage";
-import ModelsContainer from "./ModelContainer";
 
-export default function Modelpage() {
+import ChatInterface from "./Chatinterface";
+
+export default function Chatbot() {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const navigate = useNavigate();
+
+  const handleAdd = () => navigate("/protected");
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-[#F9FAFB]">
@@ -18,7 +19,7 @@ export default function Modelpage() {
         {/* Navbar */}
         <Navbar onAdd={handleAdd} />
         <div>
-          <ModelsContainer />
+          <ChatInterface />
         </div>
       </div>
     </div>

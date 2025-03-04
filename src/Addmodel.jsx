@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 
-const AddModelPage = ({ onBack }) => {
+const AddModelPages = ({ onBack }) => {
   const [formData, setFormData] = useState({
     provider: "",
     useLLMModelNames: "",
@@ -220,4 +220,4 @@ const AddModelPage = ({ onBack }) => {
   );
 };
 
-export default AddModelPage;
+export default AddModelPages;
