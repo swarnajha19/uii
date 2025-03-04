@@ -28,7 +28,7 @@ const Login = () => {
         <div className="flex flex-col items-center mb-6">
           <img src="Logo.png" alt="CogentIQ Logo" className="h-12 mb-2" />
           <h2 className="text-gray-800 text-lg font-semibold">
-            Login to LLMOps Services
+            Login to LLM Gateway
           </h2>
         </div>
 
