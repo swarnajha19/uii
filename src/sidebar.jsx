@@ -9,8 +9,8 @@ const Sidebar = ({ activePage, setActivePage }) => {
   const menuItems = [
     { name: "Models", id: "models", path: "/models" },
     {
-      name: "Chat Completion",
-      id: "chat-completion",
+      name: "Model Request",
+      id: "Model Request",
       path: "/chat-completion",
     },
     { name: "Usage", id: "usage", path: "/usage" },
