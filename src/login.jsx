@@ -5,19 +5,42 @@ import { Eye, EyeOff } from "lucide-react"; // Import eye icons from Lucide Reac
 const Login = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
+
     const formData = new FormData(e.target);
     const email = formData.get("email");
     const password = formData.get("password");
 
-    // Mock validation (Replace with actual authentication logic)
-    if (email === "test@example.com" && password === "password") {
-      navigate("/home");
-    } else {
-      setError("Invalid email or password.");
+    try {
+      const response = await fetch("http://localhost:8000/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      setLoading(false);
+
+      if (response.ok) {
+        // Store token and user details in local storage
+        localStorage.setItem("token", data.api_key);
+        localStorage.setItem("virtual_id", data.virtual_id);
+        localStorage.setItem("models", JSON.stringify(data.models));
+
+        alert("Login successful! Redirecting to dashboard.");
+        navigate("/profile");
+      } else {
+        setError(data.detail || "Invalid email or password.");
+      }
+    } catch (err) {
+      setLoading(false);
+      setError("Server error. Please try again later.");
     }
   };
 
@@ -60,9 +83,10 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition flex justify-center"
+            disabled={loading}
           >
-            CONTINUE
+            {loading ? "Logging in..." : "CONTINUE"}
           </button>
         </form>
 

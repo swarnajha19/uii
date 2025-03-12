@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Login from "./login";
-import Sidebar from "./sidebar";
+
 import ModelsPage from "./Model";
 import AddModelPage from "./Addmodel";
 import TeamsPage from "./Teamspage";
@@ -28,6 +28,8 @@ import ModelsPag from "./models";
 import Final from "./components/component/Final";
 import Budget from "./components/page/Budget";
 import UsagePage from "./components/page/UsagePage";
+import AuthApp from "./Testing";
+import Profile from "./Profile";
 
 export default function App() {
   return (
@@ -45,6 +47,8 @@ export default function App() {
         <Route path="/team" element={<Teamspage />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/budget" element={<UsagePage />} />
+        <Route path="/auth" element={<AuthApp />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

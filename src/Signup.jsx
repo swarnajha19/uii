@@ -5,35 +5,55 @@ const Signup = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const email = formData.get("email");
     const password = formData.get("password");
 
     try {
-      const response = await fetch("http://localhost:5000/api/users/signup", {
+      const response = await fetch("http://localhost:8000/signup/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-      const data = await response.json();
 
+      const data = await response.json();
       if (response.ok) {
         alert("Sign up successful! Redirecting to login.");
         navigate("/login");
       } else {
-        setError(data.message);
+        setError(data.detail || "Signup failed. Please try again.");
       }
     } catch (err) {
       setError("Server error. Please try again.");
     }
   };
 
+  const handleSSOSignup = async () => {
+    try {
+      const ssoToken = "mocked_sso_token"; // Replace with real SSO token
+      const response = await fetch("http://localhost:8000/signup/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jwt_token: ssoToken }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("SSO Sign-up successful! Redirecting to login.");
+        navigate("/login");
+      } else {
+        setError(data.detail || "SSO Signup failed.");
+      }
+    } catch (err) {
+      setError("SSO server error. Try again.");
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        {/* Logo */}
         <div className="flex flex-col items-center mb-6">
           <img src="Logo.png" alt="CogentIQ Logo" className="h-12 mb-2" />
           <h2 className="text-gray-800 text-lg font-semibold">
@@ -41,8 +61,8 @@ const Signup = () => {
           </h2>
         </div>
 
-        {/* Signup Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Signup Form (Email & Password) */}
+        <form onSubmit={handleSignup} className="space-y-4">
           <div>
             <input
               type="email"
@@ -75,7 +95,10 @@ const Signup = () => {
         {/* SSO Login Option */}
         <div className="mt-4 text-center">
           <p className="text-gray-500">OR</p>
-          <button className="w-full mt-2 border border-gray-400 py-2 rounded-md flex items-center justify-center">
+          <button
+            onClick={handleSSOSignup}
+            className="w-full mt-2 border border-gray-400 py-2 rounded-md flex items-center justify-center"
+          >
             <span className="mr-2">🖥️</span> Sign Up using Google
           </button>
         </div>
