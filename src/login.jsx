@@ -97,7 +97,7 @@ const Login = () => {
         <div className="mt-4 text-center">
           <p className="text-gray-500">OR</p>
           <button className="w-full mt-2 border border-gray-400 py-2 rounded-md flex items-center justify-center">
-            <span className="mr-2">🖥️</span> Login using Google
+            <span className="mr-2">🖥️</span> Login using SSO
           </button>
         </div>
 

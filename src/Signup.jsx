@@ -99,7 +99,7 @@ const Signup = () => {
             onClick={handleSSOSignup}
             className="w-full mt-2 border border-gray-400 py-2 rounded-md flex items-center justify-center"
           >
-            <span className="mr-2">🖥️</span> Sign Up using Google
+            <span className="mr-2">🖥️</span> Sign Up using SSO
           </button>
         </div>
 
